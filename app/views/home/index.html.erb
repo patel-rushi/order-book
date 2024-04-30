@@ -1,0 +1,28 @@
+<h1> Search Order Book</h1>
+<%= form_tag(root_path, method: "get") do %>
+  <%= label_tag(:symbol, "Symbol:") %>
+  <%= text_field_tag(:symbol, params[:symbol] || 'AAPL') %>
+
+  <%= label_tag(:time, "Time:") %>
+  <%= text_field_tag(:time, params[:time] || '2021-02-18 10:29:58.812000000 +0000') %>
+
+  <%= submit_tag("Search") %>
+<% end %>
+
+<% if @top_bids %>
+  <h2>Top Bids</h2>
+  <ul>
+    <% @top_bids.each do |bid| %>
+      <li><%= bid.symbol %> - <%= bid.bidPrice %> (<%= bid.bidQuantity %>)</li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @top_asks %>
+  <h2>Top Asks</h2>
+  <ul>
+    <% @top_asks.each do |ask| %>
+      <li><%= ask.symbol %> - <%= ask.askPrice %> (<%= ask.askQuantity %>)</li>
+    <% end %>
+  </ul>
+<% end %>
