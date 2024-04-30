@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_04_30_035835) do
+ActiveRecord::Schema.define(version: 2024_04_30_175919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 2024_04_30_035835) do
     t.string "sipfeedSeq"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["startTime", "endTime", "askPrice"], name: "index_orders_on_ask_times_and_price_asc"
-    t.index ["startTime", "endTime", "bidPrice"], name: "index_orders_on_bid_times_and_price_desc", order: { bidPrice: :desc }
+    t.index ["symbol", "startTime", "endTime", "askPrice"], name: "index_orders_on_ask_times_and_price_asc"
+    t.index ["symbol", "startTime", "endTime", "bidPrice"], name: "index_orders_on_bid_times_and_price_desc", order: { bidPrice: :desc }
   end
 
 end
